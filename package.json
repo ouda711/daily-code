@@ -19,6 +19,7 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.9.6",
     "next": "^15.1.6",
+    "node-cron": "^3.0.3",
     "openai": "^4.82.0",
     "react": "^19.0.0",
     "react-redux": "^9.2.0",
