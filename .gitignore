@@ -1,0 +1,37 @@
+# Node.js
+node_modules/
+
+# Next.js build output
+.next/
+
+# Log files
+*.log
+
+# Dependency directories
+yarn.lock
+package-lock.json
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# OpenAI API key file (if you use any local key file)
+openai-api-key.json
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# npm package directory
+npm-debug.log*
+
+# Docker related files
+docker-compose.override.yml
+
+# IDE specific files
+.idea/
+.vscode/
+
+# Mac system files
+*.swp

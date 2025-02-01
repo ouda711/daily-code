@@ -1,0 +1,38 @@
+name: Daily Real Estate App Code Generation
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Runs daily at midnight UTC
+
+jobs:
+  generate-code:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+        working-directory: ./daily-code  # Make sure to run npm install in the 'daily-code' directory
+
+      - name: Set OpenAI API Key
+        run: echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" >> $GITHUB_ENV
+
+      - name: Run Code Generation Script
+        run: node daily-code/code-generator.js  # Run the script from the 'daily-code' folder
+
+      - name: Commit and Push Changes
+        run: |
+          git config user.name "Ouda Wycliffe"
+          git config user.email "ouda.wycliffe@gmail.com"
+          git add .
+          git commit -m "Automated code generation: Added feature batch"
+          git push https://${{secrets.TOKEN}}@github.com/ouda711/real-estate-app.git HEAD:main
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
